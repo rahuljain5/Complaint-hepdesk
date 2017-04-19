@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<title>TheSaferZone|Home</title>
+	<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href='bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link rel="icon" href="logo.png">
+	  <link rel="stylesheet" href="main.css" type="text/css">
+    <script type="text/javascript">
+  
+      var nrImg = 4;  //the number of img , I only have 3 
+        var IntSeconds = 4;     //the seconds between the imgs
+
+        function Load()
+        {
+            nrShown = 0;    //the img visible
+            Vect = new Array(nrImg + 10);
+            Vect[0] = document.getElementById("Img1");
+            Vect[0].style.visibility = "visible";
+
+            
+
+            for (var i = 1; i < nrImg; i++)
+            {
+                Vect[i] = document.getElementById("Img" + (i + 1));
+                
+            }
+
+            
+
+            mytime = setInterval(Timer, IntSeconds * 1000);
+        }
+        function Timer()
+        {
+            nrShown++;
+            if (nrShown == nrImg)
+                nrShown = 0;
+            Effect();
+        }
+        //next img
+        function next()
+        {
+            nrShown++;
+            if (nrShown == nrImg)
+                nrShown = 0;
+            Effect();
+
+            clearInterval(mytime);
+            mytime = setInterval(Timer, IntSeconds * 1000);
+        }
+        function prev()
+        {
+            nrShown--;
+            if (nrShown == -1)
+                nrShown = nrImg -1;
+            Effect();
+
+            clearInterval(mytime);
+            mytime = setInterval(Timer, IntSeconds * 1000);
+        }
+        //here changes the img + effect
+        function Effect()
+        {
+            for (var i = 0; i < nrImg; i++)
+            {
+                Vect[i].style.opacity = "0";   //to add the fade effect
+                Vect[i].style.visibility = "hidden";
+
+                
+            }
+            Vect[nrShown].style.opacity = "1";
+            Vect[nrShown].style.visibility = "visible";
+            
+        }
+
+    </script>
+</head>
+<body onload="Load()">
+<nav class="navbar navbar-default" >
+  <div class="container-fluid" >
+    <div class="navbar-header" >
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><b><img src="logo.png" width="75px" height="35px" />TheSaferZone</b></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-bottom:0px;margin-top:0px;">
+      <ul class="nav navbar-nav navbar-right">
+	  <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+	  <li><a href="contact.html">Contact</a></li>
+      <li><a href="aboutus.html">About</a></li> 
+      <li ><a ><b onclick="document.getElementById('login-modal').style.display='block'">Sign Up</b></a></li>
+      </ul>
+      </div>
+  
+</nav>
+<div class="row">
+<div class="col-md-8 col-sm-4">
+<div id="slider">
+        <div id="imgs">
+            <!-- here you have to add the img tag -->
+            <img id="Img4" src="IMG/4.jpg"  height="450px">
+            <img id="Img3" src="IMG/3.jpg"  height="450px"/>
+			<img id="Img2" src="IMG/2.jpg"  height="450px"/>
+			<img id="Img1" src="IMG/1.PNG" height="450px"/>
+		    </div>
+			</div>
+			</div>
+	<div class="col-md-4" style="float:right;">
+	<br/>
+<form action="user.php" method="post">
+  <div class="imgcontainer">
+    <img src="avatar1.png" alt="Avatar" class="avatar" align="center">
+  </div>
+   <div>
+    <label><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" autocomplete="off" required>
+	<br/>
+    <label><b>Password </b></label>
+    <input type="password" placeholder="Enter Password" name="pword" autocomplete="off" required>
+	<br>
+     <button type="submit" name="login" style="width:100%">Login</button><br>
+    <input type="checkbox" > Remember me</div>
+  <div style="background-color:#f1f1f1">
+    <button type="button" name="signup" class="signupbtn" onclick="document.getElementById('login-modal').style.display='block'">Sign Up</button>
+    <span class="psw" style="float:right">Forgot <a href="recovery.php">password?&nbsp;</a></span>
+  </div>
+</form>
+</div>		
+			</div>
+			<div class="modal" id="login-modal" name="login-modal" style="display:'none'; overflow:auto;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="document.getElementById('login-modal').style.display='none'">&times;</button>
+        <h2 class="modal-title">SignUp</h2>
+      </div>
+      <div class="modal-body">
+        <form  action="user.php" method="post">
+			<label><b>Name:</b></label>
+    <input type="text" placeholder="Enter name" name="name" autocomplete="off" required /><br/>
+    <label><b>Email:</b></label>
+    <input type="text" placeholder="Enter Email" name="email" autocomplete="off" required /><br/>
+	<label><b>Phone</b></label>
+    <input type="phone" placeholder="Enter Phone" name="phone" autocomplete="off" required /><br/>
+		<label><b>Password </b></label>
+    <input type="password" placeholder="Enter Password" id="pw" name="pword" autocomplete="off" required /><br/>
+	<br/>
+		</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="document.getElementById('login-modal').style.display='none'">Close</button>
+        <button type="submit" name="signup" class="btn btn-primary">Sign Up</button>
+      </div>
+</form>
+    </div>
+  </div>
+</div>
+<hr/>
+<div class="container-fluid" style="text-align:center;color:red; ">
+	<a href="ministry.html"><h2>Find ministry Related to your problem</h2></a>
+</div>
+<div class="row" style="background-color:#5DADE2; color:white;">
+            <div class="col-md-2"></div>
+                    <div class="col-md-2" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                        <h2>The site</h2>
+                        <ul>
+                            <li><a href="#"><font color="white">Home</font></a></li>
+                            <li><a href="aboutus.html"><font color="white">About Us</font></a></li>
+							<li><a href="contact.html"><font color="white">Contact Us</font></a></li>
+                        </ul>
+                    </div>
+     <div class="col-md-2"></div>
+                    <div class="col-md-2" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                        <h2>Location</h2>
+
+                           <h3>Bengaluru :</h3>
+                                <address>
+                                10th Milestone, Hosur Rd,
+								Bengaluru, Karnataka 560068
+                                </address>
+                            
+                            
+                    </div>
+               <div class="col-md-2"></div>
+               
+                    <div class="col-md-2" " data-wow-duration="0.8s" data-wow-delay="0.3s">
+                        <h2>Contact</h2>
+                        <a href="http:"><font color="white">thesaferzone@outlook.com</font></a>
+                        <a href="http:"><font color="white">+91 944 808 0159</font></a>
+                        
+                       </div>
+               
+           
+        </div>
+		
+		<div class="footer-end-container" style="background:black;color:white; height:30px;">
+                    <div class="copyright wow slideInLeft" data-wow-duration="0.8s" data-wow-delay="0.2s" style="display:inline;">
+                        Copyright 2017 &copy; WeDev
+                    </div>
+                    <div class="createdby wow slideInRight" data-wow-duration="0.8s" data-wow-delay="0.3s" style="display:inline;float:right;">
+                            Created by WeDev
+							<img alt="WeDev" src="we-dev.png" width="40px" height="30px">
+							</div> 
+</div>
+
+<div class="modal" name="login-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title">Login/SignUp</h2>
+      </div>
+      <div class="modal-body">
+        <form action="user.php" method="post">
+			<label><b>Email:</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+	<label><b>Password </b></label>
+    <input type="password" placeholder="Enter Password" name="pword" required>
+	<button type="submit" name="login">Login</button><br>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+
