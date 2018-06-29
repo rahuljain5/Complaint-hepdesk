@@ -1,12 +1,11 @@
 <?php
-include('func.php');
-if((isset($_POST['signup']))OR(isset($_POST['login'])))
-{
-	$connect=mysqli_connect("localhost","root","","tsz");
-	login();
-$re=mysqli_query($connect,"select nop,non from feedback where email='$_SESSION[email]';");
-$r=mysqli_fetch_array($re,MYSQLI_ASSOC);
-$total=$r['nop']+$r['non'];
+include 'func.php';
+if ((isset($_POST['signup'])) or (isset($_POST['login']))) {
+    $connect = mysqli_connect("localhost", "root", "", "tsz");
+    login();
+    $re = mysqli_query($connect, "select nop,non from feedback where email='$_SESSION[email]';");
+    $r = mysqli_fetch_array($re, MYSQLI_ASSOC);
+    $total = $r['nop'] + $r['non'];
 }
 ?>
 <html>
@@ -15,9 +14,9 @@ $total=$r['nop']+$r['non'];
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,600' rel='stylesheet' type='text/css'>
-	<link href='bootstrap.min.css' rel='stylesheet' type='text/css'>
-	<link href='main.css' rel='stylesheet' type='text/css'>
-	<link rel="icon" href="logo.png">
+	<link href='./assets/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+	<link href='./assets/css/main.css' rel='stylesheet' type='text/css'>
+	<link rel="icon" href="./assets/images/logo.png">
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -28,7 +27,7 @@ $total=$r['nop']+$r['non'];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>		
+      </button>
       <a class="navbar-brand" href="#">TheSaferZone</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -62,7 +61,7 @@ $total=$r['nop']+$r['non'];
 </div>
 <div class="row">
 	<div class="col-md-1">
-	<a href="#" class="btn btn-primary btn-lg" style="display:inline">My complaints<span class="badge" style="display:inline;background-color:red;"><?php echo $total;?></span></a>
+	<a href="#" class="btn btn-primary btn-lg" style="display:inline">My complaints<span class="badge" style="display:inline;background-color:red;"><?php echo $total; ?></span></a>
 		</div>
 			<div class="col-md-3" >
 			<br/><br/><br/><br/>
@@ -80,10 +79,10 @@ $total=$r['nop']+$r['non'];
 		<div class="col-md-1"></div>
 	<div class="col-md-3">
 	<fieldset style="border:2px solid black; text-align:center; background:silver;"><br/>
-		<div class="dev-pics" style="background:white; background-image:url('avatar.png')"></div>
-		<h2><?php echo $_SESSION['name'];?></h2><br/>
-		<h2><?php echo $_SESSION['email'];?></h2><br/>
-		<h2><?php echo $_SESSION['phone'];?></h2><br/>
+		<div class="dev-pics" style="background:white; background-image:url('./assets/images/avatar.png')"></div>
+		<h2><?php echo $_SESSION['name']; ?></h2><br/>
+		<h2><?php echo $_SESSION['email']; ?></h2><br/>
+		<h2><?php echo $_SESSION['phone']; ?></h2><br/>
 	</fieldset>
  </div>
 </div>
