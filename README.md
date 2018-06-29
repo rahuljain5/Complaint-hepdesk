@@ -3,4 +3,4 @@ Anonymous Complaint Registration Portal, the complain will be sent to selected s
 
 ## License
 
-MITs
+MIT
