@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_POST['logout'])){
-session_destroy();
-?>
+if (isset($_POST['logout'])) {
+    session_destroy();
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +11,8 @@ session_destroy();
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,600' rel='stylesheet' type='text/css'>
 	<link href='http://bootswatch.com/yeti/bootstrap.min.css' rel='stylesheet' type='text/css'>
-	<link href='main.css' rel='stylesheet' type='text/css'>
-		<link rel="icon" href="logo.png">
+	<link href='./assets/css/main.css' rel='stylesheet' type='text/css'>
+		<link rel="icon" href="./assets/images/logo.png">
 </head>
 <nav class="navbar navbar-default">
   <div class="container-fluid" style="margin:0px;padding:0px;">
@@ -22,7 +22,7 @@ session_destroy();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>		
+      </button>
       <a class="navbar-brand" href="#">TheSaferZone</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -40,7 +40,7 @@ session_destroy();
 <div class="row">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
-<img src="logoutsuccess.png" height=400px; width=400px;>
+<img src="./assets/images/logoutsuccess.png" height=400px; width=400px;>
 <h1 style="text-align:center; font-size:42px;"><b>Log Out Successful<b></h1>
 </div>
 	<div class="col-md-3"></div>
